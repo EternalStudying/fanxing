@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fanxing.user.mapper.UserMapper">
+
+    <sql id="columns">
+        id, username, password, create_time, update_time, is_deleted
+    </sql>
+    
+    <insert id="insert">
+        insert into user(username, password) values (#{username}, #{password})
+    </insert>
+    
+    <select id="select" resultType="com.fanxing.model.entity.user.User">
+        select <include refid="columns"/> from user where username = #{username} and is_deleted = 0
+    </select>
+</mapper>

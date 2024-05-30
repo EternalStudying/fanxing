@@ -1,0 +1,18 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: fx-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.60.148:10003
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
