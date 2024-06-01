@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fanxing.galaxy.mapper.GalaxyMapper">
+
+    <sql id="columns">
+        id, uid, des, image, create_time, update_time, is_deleted
+    </sql>
+
+    <insert id="insertMood">
+        insert into mood(uid, des, image) values (#{uid}, #{des}, #{image})
+    </insert>
+
+    <select id="getAllMood" resultType="com.fanxing.model.entity.mood.Mood">
+        select <include refid="columns"/> from mood
+        <where>
+            <if test="des != null and des != ''">and des like CONCAT('%', #{des}, '%')</if>
+            <if test="beginTime != null">and create_time &gt;= #{beginTime}</if>
+            <if test="endTime != null">and create_time &lt;= #{endTime}</if>
+            and is_deleted = 0
+        </where>
+    </select>
+
+    <update id="deleteMood">
+        update mood set is_deleted = 1, update_time = now() where id = #{id}
+    </update>
+</mapper>

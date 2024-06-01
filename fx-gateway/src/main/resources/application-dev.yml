@@ -16,3 +16,12 @@ spring:
           uri: lb://service-user
           predicates:
             - Path=/*/user/**
+        - id: service-galaxy
+          uri: lb://service-galaxy
+          predicates:
+            - Path=/*/mood/**
+  data:
+    redis:
+      host: 111.231.60.148
+      port: 10001
+      password: 1234
