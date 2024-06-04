@@ -20,6 +20,14 @@ spring:
           uri: lb://service-galaxy
           predicates:
             - Path=/*/mood/**
+        - id: service-emotion
+          uri: lb://service-emotion
+          predicates:
+            - Path=/*/emotion/**
+        - id: service-common
+          uri: lb://service-common
+          predicates:
+            - Path=/*/common/**
   data:
     redis:
       host: 111.231.60.148

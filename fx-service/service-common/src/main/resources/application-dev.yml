@@ -1,0 +1,21 @@
+server:
+  port: 8505
+
+spring:
+  application:
+    name: service-common
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.231.60.148:10003
+  data:
+    redis:
+      host: 111.231.60.148
+      port: 10001
+      password: 1234
+fx:
+  minio:
+    endpoint: http://111.231.60.148:10002
+    accessKey: admin
+    secretKey: asdfghjkl789
+    bucketName: fanxing

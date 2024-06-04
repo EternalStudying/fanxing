@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.fanxing</groupId>
-        <artifactId>fx</artifactId>
+        <artifactId>fx-client</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>fx-client</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>common-client</module>
-    </modules>
+    <artifactId>common-client</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,15 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-    </dependencies>
 </project>

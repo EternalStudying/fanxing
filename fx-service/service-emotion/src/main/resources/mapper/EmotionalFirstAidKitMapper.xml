@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fanxing.emotion.mapper.EmotionalFirstAidKitMapper">
+
+    <sql id="columns">
+        id, des, image, create_time, update_time, is_deleted
+    </sql>
+
+    <select id="getEmotionalFirstAidKit" resultType="com.fanxing.model.entity.emotion.EmotionalFirstAidKit">
+        SELECT t1.<include refid="columns"/> FROM emotional_first_aid_kit AS t1 JOIN (SELECT ROUND(RAND()*(SELECT MAX(id)
+        FROM emotional_first_aid_kit)) AS id) AS t2 WHERE t1.id>=t2.id ORDER BY t1.id LIMIT 1;
+    </select>
+</mapper>

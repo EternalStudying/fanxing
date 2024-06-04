@@ -1,5 +1,6 @@
 package com.fanxing.galaxy.service.impl;
 
+import com.fanxing.feign.common.CommonFeignClient;
 import com.fanxing.galaxy.mapper.GalaxyMapper;
 import com.fanxing.galaxy.service.GalaxyService;
 import com.fanxing.model.dto.mood.MoodDto;
@@ -10,6 +11,7 @@ import com.fanxing.utils.AuthContextUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class GalaxyServiceImpl implements GalaxyService {
 
     @Autowired
     private GalaxyMapper galaxyMapper;
+    @Autowired
+    private CommonFeignClient commonFeignClient;
 
     @Override
     public void insertMood(MoodDto moodDto) {
@@ -36,5 +40,10 @@ public class GalaxyServiceImpl implements GalaxyService {
     @Override
     public void deleteMood(Long id) {
         galaxyMapper.deleteMood(id);
+    }
+
+    @Override
+    public String upload(MultipartFile file) {
+        return commonFeignClient.upload(file, "mood");
     }
 }
